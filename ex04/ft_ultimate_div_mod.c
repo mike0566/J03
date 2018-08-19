@@ -6,7 +6,7 @@
 /*   By: ahequet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 18:23:12 by ahequet           #+#    #+#             */
-/*   Updated: 2018/08/09 14:44:42 by ahequet          ###   ########.fr       */
+/*   Updated: 2018/08/11 16:34:48 by ahequet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,24 @@
 
 void	ft_ultimate_div_mod(int *a, int *b)
 {
-	int		a = *a /  *b;
-	int		b = *a % *b;
+		*a = *a /  *b;
+		*b = *a % *b;
 }
 
 int		main(void)
 {
-	int		a;
-	a = 2;
-	int		b;
-	b = 1;
+	int		q;
+	int		w;
+	int		*a;
+	int		*b;
 
-	ft_ultimate_div_mod(2, 1);
-	printf(%d, %d, a, b);
+	a = &q;
+	b = &w;
+	q = 12;
+	w = 5;
+
+	ft_ultimate_div_mod(a, b);
+	printf("%d, %d", *a, *b);
 	return (0);
 }
 

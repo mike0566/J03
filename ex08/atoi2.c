@@ -1,44 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrev.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahequet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/10 14:10:44 by ahequet           #+#    #+#             */
-/*   Updated: 2018/08/15 09:35:20 by ahequet          ###   ########.fr       */
+/*   Created: 2018/08/16 11:29:20 by ahequet           #+#    #+#             */
+/*   Updated: 2018/08/16 17:48:42 by ahequet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include <stdio.h>
 
-char	*ft_strrev(char *str)
+int		ft_atoi(char *str)
 {
-	int a;
-	int b;
-	int c;
+	int		a;
+	int		n;
+	int		val;
 
-		a = 0;
-		b = 0;
-		c = 0;
-	while (str[b] != '\0')
+	a = 0;
+	n = 1;
+	val = 0;
+	while(str[a] == ('\n'| '\t'| '\f'| '\r'| ' '))
 		{
-			b++;
+		a++;
 		}
-	while(a < b / 2)
+		if(str[a] == '-')
 	{
-	c = str[ b -1 -a];
-	str[b -1 -a] = str[a];
-	str[a] = c;
-	a++;
+		n = - 1;
+		a++;
 	}
-	return(str);
+		if(str[a] == '+')
+		{
+			n = 1;
+			a++;
+		}
+	if(str[a] > 57 || str[a] < 48)
+	{
+		return (0);
+	}
+	if(str[a] <= 57 && str[a] >= 48 )
+		{
+			val = a * 10 - (a - 48);
+			a++;
+		}
+	return (val * n);
 }
 
 int		main(void)
 {
-char	str[] = "couillon de la lune";
-ft_strrev(str);
-printf("%s", str);
+char	str[] ="   456 .. 3gr";
+printf("%s\n%d", str, ft_atoi(str));
 return (0);
 }
